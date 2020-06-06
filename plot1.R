@@ -9,7 +9,7 @@ data = fread(file = "./data/household_power_consumption.txt",
 
 data[, Date := lapply(.SD, as.Date, "%d/%m/%Y"), .SDcols = c("Date")]
 # Filter
-data = data[(Date >="2007-02-01")&(Date <= "2007-02-02")]
+data = data[(Date >= "2007-02-01") & (Date <= "2007-02-02")]
 
 # Prevents histogram from printing in scientific notation
 data[, Global_active_power := lapply(.SD, as.numeric), .SDcols = c("Global_active_power")]
@@ -20,3 +20,4 @@ hist(data[,Global_active_power],col = "red",main = "Global Active Power",
      xlab = "Global Active Power(kilowatt)")
 
 dev.off()
+
